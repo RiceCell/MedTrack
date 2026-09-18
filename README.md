@@ -20,15 +20,15 @@ The generator produces a relational database consisting of 5 tables:
 5. `stockout_events.csv`: The ground-truth log of when physical inventory hit zero.
 
 ## Repository Structure
-* `Word_Document_Specification.pdf` / `.docx`: The explicit mathematical blueprint, schema definitions, and APA literature citations defining the Data Generating Process.
-* `Notebook_1_Synthetic_Generator.ipynb`: The Python script that configures and generates the raw data using NumPy and Pandas.
-* `Notebook_2_EDA_and_ML.ipynb`: The analytical notebook proving the statistical realism of the data and featuring a predictive Decision Tree model.
-* `data/`: Folder containing the 5 generated CSV files.
+* `ERD_Eskwelabs_1.png`: The entity relationship diagram of all the relations for this synthetic dataset.
+* `01_synthetic_generator.ipynb`: The Python script that configures and generates the raw data using NumPy and Pandas.
+* `02_EDA_analysis.ipynb`: The analytical notebook proving the statistical realism of the data and featuring a predictive Decision Tree model.
+* `SyntheticDataset/`: Folder containing the 5 generated CSV files.
 
 ## Key Analytical Insights
 In **Notebook 2**, we trained a Scikit-Learn Decision Tree to predict whether a clinic would stock out of medicine in the next 30 days based on their monthly inventory audit. 
 
-**The result?** The model achieved a high Recall (97%) but struggled with Precision (63%). This perfectly demonstrated the impact of real-world missing data: because the algorithm could not see the hidden `management_quality` of the clinics, it was fooled by the "phantom stock" on the ledgers, proving that a model can only be as good as the reality captured in its dataset.
+**The result?** The model achieved a high Recall (97%) but struggled with Precision (63%). This perfectly demonstrated the impact of real-world missing data: because the algorithm could not see the hidden `management_quality` of the clinics, it was fooled by the "phantom stock" on the ledgers, which proved that a model can only be as good as the reality captured in its dataset.
 
 ## How to Run
 1. Clone this repository.
