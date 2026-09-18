@@ -1,5 +1,5 @@
 # MedTrack: Medicine Stockout Early Warning System
-**Medicine stockout early warning synthetic data generator and analysis pipeline | Built for Eskwelabs**
+**Medicine stockout early warning synthetic data generator and analysis pipeline | A Project Built for Eskwelabs**
 
 ## 🏥 Project Overview
 MedTrack is a highly realistic, mathematically grounded synthetic data generator simulating the Philippine Department of Health's (DOH) public supply chain. 
@@ -8,15 +8,15 @@ Built to train data professionals without exposing confidential patient or facil
 
 ## Key Technical Features
 * **Explicit Mathematical Modeling:** Demand is modeled using Poisson distributions, and supply chain delays are modeled using Exponential distributions, backed by real-world public health literature.
-* **Vectorized Time-Series Generation:** Uses Pandas and NumPy vectorization (avoiding slow `for` loops) to simulate daily inventory ledger deductions across thousands of facilities efficiently.
-* **Omitted Variable Bias (The "Secret Sauce"):** The simulation includes hidden rules—like `latent_management_quality` and seasonal `latent_outbreak_intensity`—that dictate missing stock and demand spikes. These variables are removed before export, leaving behind realistic "messy" data (phantom stock, delivery delays) for analysts to grapple with.
+* **Vectorized Time-Series Generation:** Uses Pandas and NumPy vectorization to simulate daily inventory ledger deductions across thousands of facilities efficiently.
+* **Omitted Variable Bias:** The simulation includes hidden rules—like `latent_management_quality` and seasonal `latent_outbreak_intensity` that dictate missing stock and demand spikes. These variables are removed before export, leaving behind realistic "messy" data (phantom stock, delivery delays) for analysts to grapple with.
 
 ## Data Architecture
 The generator produces a relational database consisting of 5 tables:
-1. `facilities.csv`: Static dimensions of RHUs and BHS clinics (population served, location).
-2. `deliveries.csv`: A "push" supply chain log with realistic transit delays.
+1. `facilities.csv`: Static dimensions of RHUs and BHS clinics.
+2. `deliveries.csv`: A supply chain log with realistic transit delays.
 3. `consumption.csv`: Daily patient dispensing records driven by population and hidden epidemiological shocks.
-4. `inventory_levels.csv`: End-of-month stock card audits (injected with phantom stock errors).
+4. `inventory_levels.csv`: End-of-month stock card audits.
 5. `stockout_events.csv`: The ground-truth log of when physical inventory hit zero.
 
 ## Repository Structure
